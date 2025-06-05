@@ -92,7 +92,20 @@ Node*deleteLLbyK(Node*head,int k ){
     
     return head;
 }
-
+void deleteNode(Node*temp){
+    Node*prev=temp->back;
+    Node*front=temp->next;
+    if(front==NULL){
+        prev->next=nullptr;
+        temp->back=nullptr;
+        free(temp);
+        return;
+    }
+    prev->next=front;
+    front->back=prev;
+    temp->next=temp->back=nullptr;
+    free(temp);
+}
 int main(){
       vector<int> arr = {12, 15, 19, 11,10};
 
